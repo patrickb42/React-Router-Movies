@@ -6,12 +6,12 @@ import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 
 const App = () => {
-  const [savedList, setSavedList] = useState([]);
+  const [savedList, setSavedList] = useState<MovieInterface[]>([]);
 
   // uncomment these lines once you're ready to use
-  // const addToSavedList = (movie: MovieType) => {
-  //   setSavedList( [...savedList, movie] );
-  // };
+  const addToSavedList = (movie: MovieInterface) => {
+    setSavedList([...savedList, movie]);
+  };
 
   return (
     <Router>
