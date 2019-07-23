@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export interface MovieType {
+interface MovieInterface {
   id: number;
   title: string;
   director: string;
@@ -10,9 +10,9 @@ export interface MovieType {
 }
 
 const Movie = () => {
-  const [movie, setMovie] = useState<MovieType | undefined>(undefined);
+  const [movie, setMovie] = useState<MovieInterface | undefined>(undefined);
 
-  const axiosSetMovie = () => {
+  const fetchMovie = () => {
     (async () => {
       const id = 1;
       // change ^^^ that line and grab the id from the URL
@@ -24,17 +24,9 @@ const Movie = () => {
       } catch (e) {
         console.error(e);
       }
-      // axios
-      //   .get(`http://localhost:5000/api/movies/${id}`)
-      //   .then((response) => {
-      //     setMovie(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
     })();
   };
-  useEffect(axiosSetMovie, []);
+  useEffect(fetchMovie, []);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {

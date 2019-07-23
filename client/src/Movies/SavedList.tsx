@@ -1,9 +1,12 @@
 import React from 'react';
 
-const SavedList = props => (
+interface SavedListProps {
+  list: MovieInterface[];
+}
+const SavedList = ({ list }: SavedListProps) => (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
-    {props.list.map(movie => (
+    {list.map(movie => (
       <span className="saved-movie">{movie.title}</span>
     ))}
     <div className="home-button">Home</div>

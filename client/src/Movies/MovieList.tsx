@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const MovieList = props => {
-  const [movies, setMovies] = useState([])
+const MovieList = () => {
+  const [movies, setMovies] = useState<MovieInterface[]>([]);
   useEffect(() => {
     const getMovies = () => {
       axios
         .get('http://localhost:5000/api/movies')
-        .then(response => {
+        .then((response) => {
           setMovies(response.data);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Server Error', error);
         });
-    }
-    
+    };
     getMovies();
-  }, []);
-  
+  },        []);
+
   return (
     <div className="movie-list">
       {movies.map(movie => (
@@ -25,9 +24,12 @@ const MovieList = props => {
       ))}
     </div>
   );
-}
+};
 
-function MovieDetails({ movie }) {
+interface MovieDetailsProps {
+  movie: MovieInterface;
+}
+function MovieDetails({ movie }: MovieDetailsProps) {
   const { title, director, metascore, stars } = movie;
   return (
     <div className="movie-card">
@@ -40,7 +42,7 @@ function MovieDetails({ movie }) {
       </div>
       <h3>Actors</h3>
 
-      {stars.map(star => (
+      {stars.map((star: string) => (
         <div key={star} className="movie-star">
           {star}
         </div>
