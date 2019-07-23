@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import MovieDetails from './MovieDetails';
+import MovieCard from './MovieCard';
 import { RouteChildrenProps } from 'react-router';
 
 const MovieList = (props: RouteChildrenProps) => {
@@ -28,7 +28,7 @@ const MovieList = (props: RouteChildrenProps) => {
     <div className="movie-list">
       {movies.map(movie => (
         <div onClick={goToMovieFactory(movie)}>
-          <MovieDetails key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} />
         </div>
       ))}
     </div>

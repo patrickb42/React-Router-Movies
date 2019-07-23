@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RouteProps, RouterProps, RouteComponentProps } from 'react-router';
 
-import MovieDetails from './MovieDetails';
+import MovieCard from './MovieCard';
 
 interface MovieParam {
   id: number;
@@ -38,7 +38,7 @@ const Movie = (props: RouteComponentProps) => {
   const { id, title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
-      <MovieDetails key={movie.id} movie={movie} />
+      <MovieCard key={movie.id} movie={movie} />
       <div className="save-button">Save</div>
     </div>
   );
