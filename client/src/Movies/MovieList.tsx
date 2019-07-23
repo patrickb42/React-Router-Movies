@@ -32,7 +32,7 @@ const MovieList = (props: RouteChildrenProps) => {
         // <HistLink history={props.history} dest={`movies/${movie.id}`}>
         //   <MovieCard key={movie.id} movie={movie} />
         // </HistLink>
-        <div onClick={toFactory(`movies/${movie.id}`)}>
+        <div onClick={toFactory(`/movies/${movie.id}`)}>
           <MovieCard key={movie.id} movie={movie} />
         </div>
       ))}
