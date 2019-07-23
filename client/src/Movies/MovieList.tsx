@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import MovieDetails from './MovieDetails';
+import { RouteChildrenProps } from 'react-router';
 
-const MovieList = () => {
+const MovieList = (props: RouteChildrenProps) => {
   const [movies, setMovies] = useState<MovieInterface[]>([]);
   const getMovies = () => {
     (async () => {
@@ -18,12 +19,18 @@ const MovieList = () => {
   };
   useEffect(getMovies, []);
 
+  const goToMovieFactory = (movie: MovieInterface) => {
+    return (() => {
+      props.history.push(`movies/${movie.id}`);
+    });
+  };
+
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <Link to={`movies/${movie.id}`}>
+        <div onClick={goToMovieFactory(movie)}>
           <MovieDetails key={movie.id} movie={movie} />
-        </Link>
+        </div>
       ))}
     </div>
   );
