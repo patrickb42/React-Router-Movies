@@ -23,6 +23,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       ))}
     </div>
   );
-}
+};
 
 export default MovieCard;

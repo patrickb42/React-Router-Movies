@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { RouteChildrenProps } from 'react-router';
 import axios from 'axios';
 
 import MovieCard from './MovieCard';
-import { RouteChildrenProps } from 'react-router';
+// import HistLink from '../HistLink';
 
 const MovieList = (props: RouteChildrenProps) => {
   const [movies, setMovies] = useState<MovieInterface[]>([]);
@@ -27,6 +28,10 @@ const MovieList = (props: RouteChildrenProps) => {
   return (
     <div className="movie-list">
       {movies.map(movie => (
+        // HOC to ty later
+        // <HistLink history={props.history} dest={`movies/${movie.id}`}>
+        //   <MovieCard key={movie.id} movie={movie} />
+        // </HistLink>
         <div onClick={toFactory(`movies/${movie.id}`)}>
           <MovieCard key={movie.id} movie={movie} />
         </div>
