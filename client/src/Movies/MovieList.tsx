@@ -6,19 +6,17 @@ import MovieDetails from './MovieDetails';
 
 const MovieList = () => {
   const [movies, setMovies] = useState<MovieInterface[]>([]);
-  useEffect(() => {
-    const getMovies = () => {
-      axios
-        .get('http://localhost:5000/api/movies')
-        .then((response) => {
-          setMovies(response.data);
-        })
-        .catch((error) => {
-          console.error('Server Error', error);
-        });
-    };
-    getMovies();
-  },        []);
+  const getMovies = () => {
+    (async () => {
+      try {
+        const axiosResponse = await axios.get('http://localhost:5000/api/movies');
+        setMovies(axiosResponse.data);
+      } catch (e) {
+        console.error('Server Error', e);
+      }
+    })();
+  };
+  useEffect(getMovies, []);
 
   return (
     <div className="movie-list">
