@@ -18,16 +18,16 @@ const MovieList = (props: RouteChildrenProps) => {
   };
   useEffect(getMovies, []);
 
-  const goToMovieFactory = (movie: MovieInterface) => {
+  const toFactory = (dest: string) => {
     return (() => {
-      props.history.push(`movies/${movie.id}`);
+      props.history.push(dest);
     });
   };
 
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <div onClick={goToMovieFactory(movie)}>
+        <div onClick={toFactory(`movies/${movie.id}`)}>
           <MovieCard key={movie.id} movie={movie} />
         </div>
       ))}
