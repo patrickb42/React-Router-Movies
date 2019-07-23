@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RouteProps, RouterProps, RouteComponentProps } from 'react-router';
 
-interface MovieInterface {
+
+interface MovieParam {
   id: number;
-  title: string;
-  director: string;
-  metascore: number;
-  stars: string[];
 }
-
-const Movie = () => {
+const Movie = (props: RouteComponentProps) => {
   const [movie, setMovie] = useState<MovieInterface | undefined>(undefined);
 
   const fetchMovie = () => {
     (async () => {
-      const id = 1;
+      const params = props.match.params as MovieParam;
+      const id = params.id;
       // change ^^^ that line and grab the id from the URL
       // You will NEED to add a dependency array to this effect hook
 
